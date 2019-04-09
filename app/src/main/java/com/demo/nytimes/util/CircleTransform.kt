@@ -4,9 +4,6 @@ import android.graphics.*
 import com.squareup.picasso.Transformation
 
 
-/**
- * Created by Satish Kongondhi on 09/04/19.
- */
 class CircleTransform:Transformation {
     override fun key(): String {
         return "circle"
