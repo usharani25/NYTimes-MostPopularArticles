@@ -25,14 +25,14 @@ import com.demo.nytimes.models.CustomArticleModel
 class MostPopularActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var viewModel: MostPopularViewModel
-    private val movies = mutableListOf<CustomArticleModel>()
+    private val articles = mutableListOf<CustomArticleModel>()
 
     private val picasso = lazy {
         Picasso.with(this)
     }
 
     private val movieAdapter = lazy {
-        MovieAdapter(this, movies, picasso.value)
+        MovieAdapter(this, articles, picasso.value)
     }
 
 
@@ -122,7 +122,7 @@ class MostPopularActivity : AppCompatActivity(), NavigationView.OnNavigationItem
             .observe(this) {
                 parentShimmerLayout.visibility = View.GONE
                 parentShimmerLayout.stopShimmerAnimation()
-                movies.addAll(it)
+                articles.addAll(it)
                 movieAdapter.value.notifyDataSetChanged()
             }
     }
@@ -132,7 +132,7 @@ class MostPopularActivity : AppCompatActivity(), NavigationView.OnNavigationItem
             .nonNull()
             .observe(this) {
                 parentShimmerLayout.stopShimmerAnimation()
-                Toast.makeText(this, "Error occurred in fetching movies!!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Error occurred in fetching articles!!", Toast.LENGTH_LONG).show()
             }
     }
 
